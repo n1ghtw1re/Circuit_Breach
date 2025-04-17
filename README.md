@@ -2,8 +2,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
+![Circuit Breach](https://github.com/n1ghtw1re/Circuit_Breach/blob/main/assets/images/screenshot.png)
 
-https://circuit-breach.neocities.org/
+
+## LIVE PREVIEW: https://circuit-breach.neocities.org/
 
 ---
 
