@@ -1,0 +1,527 @@
+/* ---=== Circuit Breach CSS ===--- */
+
+/* ---=== Variables & Reset ===--- */
+:root {
+    --color-background: #050818; /* Deep dark blue/purple */
+    --color-text: #e0e0e0;       /* Light grey/off-white */
+    --color-primary: #00ffff;    /* Cyan */
+    --color-secondary: #ff00ff;  /* Magenta */
+    --color-accent: #f0ff00;     /* Bright Yellow/Green */
+    --color-meta: #888eff;       /* Muted purple/blue for meta */
+    --color-dark-accent: #1a1f36; /* Darker bg element */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Lato', sans-serif;
+    --font-mono: 'Share Tech Mono', monospace;
+    --glow-primary: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary), 0 0 15px var(--color-primary);
+    --glow-secondary: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    font-size: 16px; /* Base font size */
+    position: relative; /* Needed for scanlines */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* ---=== Retro Scanlines Effect (Subtler Version) ===--- */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background:
+        /* Horizontal Lines: Made fainter (opacity 0.15 instead of 0.25) and slightly thicker (5px instead of 4px) */
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+        /* Vertical Color Bars: Kept very subtle */
+        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    /* Increased size height to 5px */
+    background-size: 100% 5px, 6px 100%;
+    /* Animation slowed down significantly (1.5 seconds instead of 0.1) */
+    animation: scanlineAnim 1.5s linear infinite;
+    /* Added slight opacity to the whole overlay to blend it more */
+    opacity: 0.8;
+}
+
+@keyframes scanlineAnim {
+    0% {
+        /* Start position */
+        background-position: 0 0;
+     }
+    100% {
+        /* End position matches the height of the line pattern (5px) for a smooth loop */
+        background-position: 0 5px;
+    }
+}
+
+/* ---=== Layout & Container ===--- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative; /* Ensure content is above scanlines locally if needed */
+    z-index: 1;
+    /* Added a very subtle background blur to push the scanlines back visually */
+    /* backdrop-filter: blur(1px); Remove if you don't like it or it causes performance issues */
+}
+
+/* ---=== Typography ===--- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2em; color: var(--color-secondary); text-shadow: var(--glow-secondary); }
+h3 { font-size: 1.6em; }
+
+p {
+    margin-bottom: 1.2em;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--color-accent);
+    text-shadow: 0 0 8px var(--color-accent);
+}
+
+code, .meta-label, .meta span:not(.meta-label), time, .read-more, .back-link {
+    font-family: var(--font-mono);
+}
+
+code {
+    background-color: rgba(0, 255, 255, 0.1);
+    color: var(--color-accent);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* ---=== Header ===--- */
+.site-header {
+    border-bottom: 2px solid var(--color-secondary);
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.site-header .logo h1 {
+    margin-bottom: 0.1em;
+    font-size: 3.5em; /* Larger site title */
+}
+.site-header .logo h1 a {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+}
+.site-header .logo h1 a:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 8px var(--color-accent);
+}
+
+.site-header .tagline {
+    font-family: var(--font-mono);
+    font-size: 1.1em;
+    color: var(--color-secondary);
+    text-shadow: var(--glow-secondary);
+    margin-bottom: 5px;
+}
+
+.site-header .sub-tagline {
+    font-size: 0.95em;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 10px auto 20px auto; /* Center the tagline */
+    opacity: 0.8;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Space between nav items */
+}
+
+.main-nav a {
+    font-family: var(--font-mono);
+    font-size: 1.1em;
+    color: var(--color-primary);
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus,
+.main-nav a.active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent);
+    background-color: rgba(240, 255, 0, 0.1); /* Faint yellow bg on hover/active */
+}
+
+/* ---=== Main Content & Articles ===--- */
+.main-content {
+    padding: 20px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+.article-list {
+    display: grid;
+    gap: 40px;
+}
+
+.article-preview {
+    border: 1px solid var(--color-primary);
+    padding: 25px;
+    background-color: var(--color-dark-accent);
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--color-primary), inset 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.article-preview .article-title a {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+}
+.article-preview .article-title a:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 8px var(--color-accent);
+}
+
+.meta {
+    font-size: 0.9em;
+    color: var(--color-meta);
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba(136, 142, 255, 0.3); /* Dashed line under meta */
+    padding-bottom: 10px;
+}
+
+.meta .meta-label {
+    color: var(--color-secondary);
+    margin-right: 5px;
+}
+
+.excerpt {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+.read-more:hover {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+}
+
+/* ---=== Full Article Page ===--- */
+.full-article {
+    padding: 20px;
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-dark-accent);
+    margin-bottom: 30px; /* Space before back link */
+}
+
+.full-article .article-title-main {
+    text-align: center;
+    color: var(--color-secondary); /* Magenta for main article title */
+    text-shadow: var(--glow-secondary);
+    font-size: 2.5em; /* Slightly smaller than site title */
+    margin-bottom: 10px;
+}
+
+.full-article .article-meta {
+    text-align: center;
+    border-bottom-color: rgba(255, 0, 255, 0.3); /* Magenta dashed line */
+    margin-bottom: 30px;
+}
+
+.article-content {
+    margin-top: 20px;
+}
+
+.article-content p:last-child {
+    margin-bottom: 0;
+}
+
+.post-nav {
+    text-align: center;
+}
+
+.back-link {
+     display: inline-block;
+     padding: 8px 15px;
+     border: 1px solid var(--color-primary);
+     transition: all 0.3s ease;
+}
+.back-link:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent);
+}
+
+
+/* ---=== Footer ===--- */
+.site-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid var(--color-secondary);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--color-meta);
+}
+
+.site-footer p {
+    margin-bottom: 5px;
+    opacity: 0.7;
+}
+
+/* ---=== Responsive Design ===--- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    .site-header .logo h1 { font-size: 2.8em; }
+    .full-article .article-title-main { font-size: 2em; }
+    h2 { font-size: 1.7em; }
+    h3 { font-size: 1.4em; }
+
+    .main-nav ul {
+        flex-direction: column; /* Stack nav items */
+        gap: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+     body { font-size: 15px; }
+     h1 { font-size: 1.9em; }
+     .site-header .logo h1 { font-size: 2.2em; }
+     .full-article .article-title-main { font-size: 1.8em; }
+     h2 { font-size: 1.5em; }
+     h3 { font-size: 1.3em; }
+
+    .article-preview {
+        padding: 15px;
+    }
+
+    .full-article {
+        padding: 15px;
+    }
+}
+
+/* ---=== Layout & Container ===--- */
+.container {
+    max-width: 1100px; /* Widen container slightly for sidebar */
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* NEW: Main Layout Grid */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px; /* Main content takes remaining space, sidebar fixed width */
+    gap: 40px; /* Space between main content and sidebar */
+    margin-top: 30px; /* Add some space below header/nav */
+}
+
+main.main-content {
+    /* No specific width needed, grid handles it */
+    padding: 0; /* Remove default padding if main-content had any */
+}
+
+/* ---=== Sidebar Styles ===--- */
+aside.sidebar-right {
+    border-left: 1px solid var(--color-secondary);
+    padding-left: 30px;
+    color: var(--color-text); /* Ensure default text color */
+}
+
+.sidebar-widget {
+    background-color: rgba(26, 31, 54, 0.5); /* var(--color-dark-accent) with transparency */
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-primary);
+    box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.sidebar-widget:last-child {
+    margin-bottom: 0;
+}
+
+h3.sidebar-title {
+    font-family: var(--font-mono); /* Use mono for sidebar titles */
+    font-size: 1.2em;
+    color: var(--color-accent); /* Yellow/Green for emphasis */
+    text-shadow: 0 0 5px var(--color-accent);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed rgba(240, 255, 0, 0.3); /* Dashed accent line */
+}
+
+.sidebar-widget ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+.sidebar-widget ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-widget ul li a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+.sidebar-widget ul li a::before { /* Add hacker-style list marker */
+    content: '>';
+    margin-right: 8px;
+    color: var(--color-secondary);
+}
+
+.sidebar-widget ul li a:hover,
+.sidebar-widget ul li a:focus {
+    color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent);
+}
+
+.sidebar-widget p {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+
+/* ---=== Responsive Design Adjustments ===--- */
+/* Adjust breakpoint as needed, e.g., 900px or 768px */
+@media (max-width: 900px) {
+    .container {
+        max-width: 95%; /* Use more screen width */
+    }
+
+    /* Stack layout */
+    .main-layout {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 30px; /* Adjust gap for vertical stacking */
+    }
+
+    aside.sidebar-right {
+        border-left: none; /* Remove side border */
+        border-top: 1px solid var(--color-secondary); /* Add top border */
+        padding-left: 0; /* Remove side padding */
+        padding-top: 30px; /* Add space above */
+        margin-top: 20px; /* Add space between main and sidebar */
+    }
+}
+
+/* Keep other responsive rules for fonts, etc. */
+@media (max-width: 768px) {
+    /* Existing rules */
+    h1 { font-size: 2.2em; }
+    .site-header .logo h1 { font-size: 2.8em; }
+    /* ... other rules ... */
+
+    /* No change needed for main-layout stacking here unless different from 900px */
+}
+
+@media (max-width: 480px) {
+    /* Existing rules */
+     body { font-size: 15px; }
+     h1 { font-size: 1.9em; }
+    /* ... other rules ... */
+
+     /* Adjust sidebar padding on smallest screens */
+     .sidebar-widget {
+        padding: 15px;
+     }
+}
+
+/* ---=== Page Specific Styles (e.g., About page) ===--- */
+
+/* Style for the main title on static pages like About */
+.page-title {
+    text-align: center;
+    color: var(--color-secondary); /* Or keep primary if preferred */
+    text-shadow: var(--glow-secondary); /* Or primary glow */
+    font-size: 2.5em; /* Adjust as needed */
+    margin-bottom: 30px;
+    border-bottom: 1px dashed var(--color-secondary); /* Optional separator */
+    padding-bottom: 15px;
+}
+
+/* General container for static page content */
+.page-content {
+    background-color: rgba(26, 31, 54, 0.3); /* Slightly different bg? Optional */
+    padding: 25px;
+    border: 1px solid var(--color-primary); /* Optional border */
+    margin-bottom: 20px; /* Space below content before potential footer */
+}
+
+.page-content .article-content p:last-child {
+    margin-bottom: 0; /* Remove margin from last paragraph */
+}
+
+/* Ensure code tags on page content stand out if needed */
+.page-content code {
+    display: block; /* Make the last line block */
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* ---=== Main Content & Articles ===--- */
+/* Add/adjust rules for main content area if needed */
+/* ... (rest of your CSS) ... */
+
+/* Ensure article content styles apply broadly or add specific page styles */
+.article-content { /* This rule might now apply to both posts and pages */
+    margin-top: 20px;
+}
+
+.article-content p { /* Ensure consistent paragraph styling */
+    margin-bottom: 1.2em;
+}
+
+/* ... (rest of your CSS) ... */
