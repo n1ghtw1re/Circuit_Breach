@@ -524,4 +524,67 @@ h3.sidebar-title {
     margin-bottom: 1.2em;
 }
 
-/* ... (rest of your CSS) ... */
+/* ---=== Archive Page Styles ===--- */
+
+.archives-section .page-title {
+    margin-bottom: 20px; /* Adjust spacing below title */
+}
+
+.archive-intro {
+    font-family: var(--font-mono);
+    color: var(--color-meta);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.archive-list ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.archive-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--color-secondary); /* Separator line */
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.archive-item:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+.archive-item:hover {
+     background-color: rgba(255, 0, 255, 0.05); /* Subtle magenta glow on hover */
+}
+
+.archive-date {
+    font-family: var(--font-mono);
+    color: var(--color-meta);
+    margin-right: 15px;
+    display: inline-block; /* Ensure proper spacing */
+    min-width: 90px; /* Align dates roughly */
+}
+
+.archive-title {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.archive-title:hover {
+    color: var(--color-accent);
+    text-shadow: var(--glow-primary);
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 480px) {
+    .archive-date {
+        display: block; /* Stack date above title */
+        margin-bottom: 5px;
+        min-width: auto;
+    }
+    .archive-item {
+        padding: 15px 5px; /* Adjust padding */
+    }
+}
