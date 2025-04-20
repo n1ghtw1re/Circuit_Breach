@@ -588,3 +588,40 @@ h3.sidebar-title {
         padding: 15px 5px; /* Adjust padding */
     }
 }
+
+/* Optional styles for new headings on static pages */
+.section-title-minor {
+    font-family: var(--font-mono);
+    font-size: 1.4em;
+    color: var(--color-primary); /* Or secondary */
+    text-shadow: var(--glow-primary); /* Or secondary */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--color-primary); /* Or secondary */
+}
+
+.sub-heading {
+    font-family: var(--font-heading); /* Use main heading font */
+    font-size: 1.3em;
+    color: var(--color-accent); /* Use accent color */
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Ensure lists within article content have some basic style */
+.article-content ol,
+.article-content ul {
+    margin-left: 25px; /* Indent lists */
+    margin-bottom: 1.2em; /* Space after lists */
+}
+
+.article-content li {
+    margin-bottom: 0.8em; /* Space between list items */
+}
+
+/* Style the meta line below page title if needed */
+.page-content .article-meta {
+  font-size: 0.85em; /* Slightly smaller */
+  /* Add other styles if you removed border/margin inline */
+}
