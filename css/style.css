@@ -625,3 +625,36 @@ h3.sidebar-title {
   font-size: 0.85em; /* Slightly smaller */
   /* Add other styles if you removed border/margin inline */
 }
+
+/* ---=== Collective Links Page Styles ===--- */
+
+.collective-link-list {
+    list-style-type: decimal-leading-zero; /* Or decimal, or none if preferred */
+    padding-left: 25px; /* Indent list */
+    margin-top: 20px;
+}
+
+.collective-link-list li {
+    margin-bottom: 20px; /* Space between link entries */
+    line-height: 1.6;
+}
+
+.collective-link-title {
+    font-weight: bold;
+    color: var(--color-primary); /* Use primary link color */
+    font-size: 1.1em;
+    display: block; /* Make title block level for spacing */
+    margin-bottom: 5px;
+}
+
+.collective-link-title:hover {
+    color: var(--color-accent);
+    text-shadow: var(--glow-primary);
+}
+
+/* Style the description text below the link */
+.collective-link-list li {
+   /* Existing style */
+   color: var(--color-text); /* Ensure description text is standard color */
+   font-size: 0.95em; /* Slightly smaller description */
+}
