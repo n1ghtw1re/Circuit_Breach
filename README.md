@@ -151,6 +151,12 @@ Contributions are welcome! If you find bugs, have suggestions for improvements, 
 
 Please adhere to standard coding practices and maintain the project's overall style and simplicity.
 
+## Contact / Community
+
+- Email: [n1ghtw1re@proton.me](mailto:n1ghtw1re@proton.me)
+- Bluesky: [@n1ghtw1re.neocities.org](https://bsky.app/profile/n1ghtw1re.neocities.org)
+- Mastodon: [@n1ghtw1re@defcon.social](https://defcon.social/@n1ghtw1re)
+
 ## License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details. (You should create a file named `LICENSE` in the root and paste the MIT license text into it).
