@@ -1,9 +1,22 @@
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-circuit--breach.neocities.org-blue?logo=internet-explorer)](https://circuit-breach.neocities.org/)
+[![Social Preview](https://circuit-breach.neocities.org/assets/images/logo/circuit_breach_learn_more.png)](https://circuit-breach.neocities.org/)
 
+![Circuit Breach Screenshot](https://github.com/n1ghtw1re/Circuit_Breach/blob/main/assets/images/screenshot.png)
 
-![Circuit Breach](https://github.com/n1ghtw1re/Circuit_Breach/blob/main/assets/images/screenshot.png)
-
+## Table of Contents
+- [Live Preview](#live-preview)
+- [About This Project](#about-this-project)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage - Adding Content](#usage---adding-content)
+- [Customization](#customization)
+- [Technology Stack](#technology-stack)
+- [Browser Support](#browser-support)
+- [Known Issues / Limitations](#known-issues--limitations)
+- [Contributing](#contributing)
+- [Contact / Community](#contact--community)
+- [License](#license)
 
 ## LIVE PREVIEW: https://circuit-breach.neocities.org/
 
@@ -30,9 +43,20 @@ This template is ideal for:
 *   **Maintainable Structure:** Uses JavaScript to dynamically load reusable HTML partials (Header, Footer, Sidebar) into placeholder elements.
 *   **Organized Files:** Clear folder structure for CSS, JS, articles, pages, partials, and assets.
 *   **SEO Friendly Basics:** Semantic HTML structure and meta tags included.
+*   **Open Graph & Twitter Card Meta:** All pages include Open Graph and Twitter Card meta tags for rich social sharing previews.
 *   **Easy Content Addition:** Simply create new HTML files for articles/pages and update the index/navigation.
 *   **Sample Content:** Includes homepage (`index.html`), an about page (`pages/about.html`), and a sample article (`articles/circuit-breach-detected.html`).
 *   **Minimal JavaScript:** Vanilla JS used primarily for loading partials, setting the active nav link, updating the copyright year, and simple entry animations.
+
+## Browser Support
+
+Tested in the latest versions of Chrome, Firefox, Edge, and Safari. Should work in any modern standards-compliant browser.
+
+## Known Issues / Limitations
+
+- **Local file:// restrictions:** If you open `index.html` directly (file:///), browsers will block JavaScript from loading partials (header, footer, sidebar) due to security restrictions. Use a local web server for full functionality.
+- **Root-relative links:** Navigation links in the header use root-relative paths (e.g., `/pages/about.html`). These may not work as expected when running from file://. They work correctly on a web server (local or live).
+
 ## Getting Started
 
 1.  **Clone the Repository:**
@@ -67,17 +91,20 @@ This template is ideal for:
 2.  **Structure the File:** Copy the basic structure from an existing article (like `articles/circuit-breach-detected.html`). Make sure it includes:
     *   The `DOCTYPE`, `<html>`, `<head>` (with correct relative path `../css/style.css`), and `<body>`.
     *   The `<div class="scanlines"></div>` and `<div class="container">`.
+
+
     *   The `<div id="header-placeholder"></div>`.
     *   The main content area, typically within `<main class="main-content">` using `<article class="full-article">`.
-    *   **No Sidebar Placeholder** (as per current design for articles).
+
+
     *   The `<footer id="footer-placeholder"></div>`.
     *   The script tag with the correct relative path: `<script src="../js/script.js"></script>`.
 3.  **Write Your Content:** Edit the `<title>`, meta description, article title (`<h1 class="article-title-main">`), meta information (`<p class="meta article-meta">`), and the main content within `<div class="article-content">`.
 4.  **Update the Homepage (`index.html`):**
     *   Open `index.html`.
     *   Find the `<section class="article-list">`.
-    *   Copy an existing `<article class="article-preview">...</article>` block.
-    *   Paste the copied block below the existing ones.
+
+
     *   Update the `href` attributes in the new preview block to point to your new article file (e.g., `href="articles/my-new-post.html"`).
     *   Update the article title (`<h3 class="article-title">`), timestamp (`<time>`), source/author, and the excerpt paragraph (`<div class="excerpt">`) within the preview block.
 
@@ -88,7 +115,8 @@ This template is ideal for:
 3.  **Write Content:** Add your page-specific title, meta tags, and content within `<main class="main-content">`. Use appropriate semantic elements.
 4.  **Update Navigation:**
     *   Open `partials/header.html`.
-    *   Add a new list item `<li>` to the `<nav class="main-nav"><ul>` section.
+
+
     *   Include an anchor tag `<a>` pointing to your new page using a **root-relative path** (e.g., `href="/pages/contact.html"`). Give it appropriate link text (e.g., `// Contact_Signal`).
     *   The `js/script.js` will automatically handle highlighting the active link based on the URL.
 
